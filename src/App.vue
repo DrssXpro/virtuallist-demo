@@ -29,6 +29,7 @@ import ListContainer from "./views/list-container.vue";
     position: relative;
     width: 40vw;
     height: 80vh;
+    max-width: 450px;
     border: 1px solid red;
     padding: 20px;
     .tip {
