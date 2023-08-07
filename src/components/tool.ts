@@ -11,7 +11,7 @@ function rafThrottle(fn: Function) {
 }
 
 function debounce(fn: Function, delay: number = 300) {
-  let timer: NodeJS.Timer | null = null;
+  let timer: number | null = null;
   return function (this: any, ...args: any[]) {
     timer && clearTimeout(timer);
     timer = setTimeout(() => {
