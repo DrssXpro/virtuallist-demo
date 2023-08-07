@@ -10,4 +10,14 @@ function rafThrottle(fn: Function) {
   };
 }
 
-export { rafThrottle };
+function debounce(fn: Function, delay: number = 300) {
+  let timer: NodeJS.Timer | null = null;
+  return function (this: any, ...args: any[]) {
+    timer && clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+}
+
+export { rafThrottle, debounce };

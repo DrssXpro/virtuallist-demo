@@ -1,3 +1,5 @@
+import type { CSSProperties } from "vue";
+// 虚拟列表
 export interface IVirtuallistProps<T> {
   // 固定item高度
   itemHeight: number;
@@ -11,6 +13,7 @@ export interface IVirtuallistProps<T> {
   dataSource: T[];
 }
 
+// 不定高虚拟列表
 export interface IEstimatedListProps<T> {
   loading: boolean;
   estimatedHeight: number;
@@ -29,3 +32,63 @@ export interface IPosInfo {
   // 高度差：判断是否需要更新
   dHeight: number;
 }
+
+// 瀑布流
+export interface IWaterFallProps {
+  gap: number;
+  column: number;
+  pageSize: number;
+  request: (page: number, pageSize: number) => Promise<IImageItem[]>;
+}
+
+export interface IImageItem {
+  id: string | number;
+  url: string;
+  width: number;
+  height: number;
+  [key: string]: any;
+}
+
+// 瀑布流虚拟列表
+export interface IVirtualWaterFallProps {
+  column?: number;
+  columnItemCount?: number;
+  requestSize?: number;
+  gap?: number;
+  request?: FsVirtualWaterfallReuqest;
+}
+
+export interface IColumnQueue {
+  list: Array<IRenderItem>;
+  height: number;
+}
+
+export interface IItemRect {
+  width: number;
+  height: number;
+}
+
+// 渲染视图项
+export interface IRenderItem {
+  item: IDataItem;
+  y: number;
+  h: number;
+  style: CSSProperties;
+}
+
+// 数据源项类型：固定宽高
+export interface IDataItem {
+  id: number | string;
+  width: number;
+  height: number;
+  [key: string]: any;
+}
+
+// 数据请求
+export type FsVirtualWaterfallReuqest = (
+  page: number,
+  pageSize: number
+) => Promise<{
+  total: number;
+  list: IDataItem[];
+}>;
