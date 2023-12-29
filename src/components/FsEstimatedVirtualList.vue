@@ -147,7 +147,7 @@ const binarySearch = (list: IPosInfo[], value: number) => {
   while (left < right) {
     const midIndex = Math.floor((left + right) / 2);
     const midValue = list[midIndex].bottom;
-    if (midValue === value) return midIndex;
+    if (midValue === value) return midIndex + 1;
     else if (midValue < value) left = midIndex + 1;
     else if (midValue > value) {
       if (templateIndex === -1 || templateIndex > midIndex) templateIndex = midIndex;
