@@ -74,9 +74,10 @@ watch(
 const initPosition = () => {
   const pos: IPosInfo[] = [];
   const disLen = props.dataSource.length - state.preLen;
-  const preTop = positions.value[positions.value.length - 1] ? positions.value[positions.value.length - 1].top : 0;
-  const preBottom = positions.value[positions.value.length - 1]
-    ? positions.value[positions.value.length - 1].bottom
+  const currentLen = positions.value.length;
+  const preTop = positions.value[currentLen - 1] ? positions.value[currentLen - 1].top : 0;
+  const preBottom = positions.value[currentLen - 1]
+    ? positions.value[currentLen - 1].bottom
     : 0;
   for (let i = 0; i < disLen; i++) {
     const item = props.dataSource[state.preLen + i];
