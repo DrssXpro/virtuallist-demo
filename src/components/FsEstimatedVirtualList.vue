@@ -53,12 +53,15 @@ const scrollStyle = computed(
     } as CSSProperties)
 );
 
-watch([() => listRef.value, () => props.dataSource.length], () => {
-  props.dataSource.length && initPosition();
-  nextTick(() => {
-    props.dataSource.length && setPosition();
-  });
-});
+watch(
+  () => props.dataSource.length,
+  () => {
+    initPosition();
+    nextTick(() => {
+      setPosition();
+    });
+  }
+);
 
 watch(
   () => state.startIndex,
