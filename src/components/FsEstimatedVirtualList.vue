@@ -75,16 +75,13 @@ const initPosition = () => {
   const pos: IPosInfo[] = [];
   const disLen = props.dataSource.length - state.preLen;
   const currentLen = positions.value.length;
-  const preTop = positions.value[currentLen - 1] ? positions.value[currentLen - 1].top : 0;
-  const preBottom = positions.value[currentLen - 1]
-    ? positions.value[currentLen - 1].bottom
-    : 0;
+  const preBottom = positions.value[currentLen - 1] ? positions.value[currentLen - 1].bottom : 0;
   for (let i = 0; i < disLen; i++) {
     const item = props.dataSource[state.preLen + i];
     pos.push({
       index: item.id,
       height: props.estimatedHeight,
-      top: preTop ? preTop + i * props.estimatedHeight : item.id * props.estimatedHeight,
+      top: preBottom ? preBottom + i * props.estimatedHeight : item.id * props.estimatedHeight,
       bottom: preBottom ? preBottom + (i + 1) * props.estimatedHeight : (item.id + 1) * props.estimatedHeight,
       dHeight: 0,
     });

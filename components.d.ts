@@ -14,6 +14,7 @@ declare module 'vue' {
     FsVirtualList: typeof import('./src/components/FsVirtualList.vue')['default']
     FsVirtualWaterFall: typeof import('./src/components/FsVirtualWaterFall.vue')['default']
     FsWaterFall: typeof import('./src/components/FsWaterFall.vue')['default']
+    List: typeof import('./src/components/List.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
